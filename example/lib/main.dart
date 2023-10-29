@@ -1,24 +1,3 @@
-
-## Features
-* Anywhere placement system
-* Dock Horizontal placement system
-* Dock Vertical placement system
-* Any center side placement system
-* Any corner placement system
-* Any nearest placement system
-* Center in Bottom and Top side placement system
-* Center in Bottom and Top any corner placement system
-* Center in Top and Bottom any side placement system
-* Center in Top and Bottom any corner placement system
-* Center in Left and Right any side placement system
-* Center in Left and Right any corner placement system
-* Center in Right and Left any side placement system
-* Center in Right and Left any corner placement system
-
-## Usage
-
-```dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_moveable/flutter_moveable.dart';
@@ -52,15 +31,22 @@ class MyApp extends StatelessWidget {
           movedAnimationTime: 200,
           movingAnimationTime: 50,
           object: MoveableObject.rational(
-            maxWidth: 60,
-            ratio: 1,
-            margin: const EdgeInsets.only(top: 40),
+            maxWidth: 120,
+            ratio: 1 / 1.5,
+            margin: const EdgeInsets.only(
+              top: 40,
+              bottom: 16,
+              left: 16,
+              right: 16,
+            ),
             builder: (dragging, child) {
               return Center(
                 child: AnimatedContainer(
-                  width: dragging ? 50 : 60,
+                  width: dragging ? 100 : 120,
                   clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(shape: BoxShape.circle),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                   duration: const Duration(milliseconds: 200),
                   child: child,
                 ),
@@ -80,8 +66,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-```
-
-
